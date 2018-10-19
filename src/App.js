@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import './App.css';
+import Titles from "./components/Titles";
+import Form from "./components/Form";
+import Weather from "./components/Weather";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Hello from App.js</h1>
-        <p>This is not html but JSX!</p>
-      </div>
+      <Fragment>
+        <Titles />
+        <Form />
+        <Weather />
+      </Fragment>
     );
   }
-}
+};
 
 export default App;
