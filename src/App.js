@@ -23,15 +23,26 @@ class App extends Component {
     const country = event.target.elements.country.value;
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}&units=metric`);
     const response = await api_call.json();
-    console.log(response);
-    this.setState({
-      temperature: response.main.temp,
-      city: response.name,
-      country: response.sys.country,
-      humidity: response.main.humidity,
-      description: response.weather[0].description,
-      error: ""
-    });
+    if (city && country) {
+      console.log(response);
+      this.setState({
+        temperature: response.main.temp,
+        city: response.name,
+        country: response.sys.country,
+        humidity: response.main.humidity,
+        description: response.weather[0].description,
+        error: ""
+      });
+    } else {
+      this.setState({
+        temperature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: "Please Enter a City and the Country"
+      });
+    }
   }
 
   render() {
